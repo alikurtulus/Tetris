@@ -1,0 +1,19 @@
+.game-board{
+width: 28rem;
+ text-align: center;
+ margin: auto;
+}
+.grid{
+width: 100%;
+height: 52rem;
+display: flex;
+flex-direction: row;
+
+flex-wrap: wrap;
+
+}
+.cell{
+    width: 2.5rem;
+    height: 2.5rem;
+    border:1px solid black;
+}
