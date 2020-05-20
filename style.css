@@ -5,7 +5,7 @@ h1{
     color:white;
 }
 .game-board{
-    width:40rem;
+    width:42rem;
     text-align: center;
     margin: 1.5rem auto;
 }
@@ -22,7 +22,7 @@ h1{
     border:1px solid white;
 }
 .shape-container{
-    width: 11rem;
+    width: 14rem;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -61,5 +61,5 @@ h1{
 }
 
 .tetromino{
-    background-color: blue;
+    
 }
