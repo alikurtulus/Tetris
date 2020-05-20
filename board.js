@@ -5,13 +5,14 @@ class Board {
         this.targetBoard = targetBoard
     }
     createBoard(cellsNumber){
-       for(let i=0; i<cellsNumber;i++){
+       for(let i = 0; i < cellsNumber; i++){
           const cell = document.createElement('div')
           cell.className = this.className
-          this.targetBoard.append(cell)
+          this.targetBoard.appendChild(cell)
           
        }
-
+       
 
     }
+
 }

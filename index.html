@@ -8,17 +8,28 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="game-board">
-        <h2>Tetris</h2>
+    <div class="main-container">
         <div>
-            <div class="grid">
-                
+            <h1>Score: <span id='score'> 0</span></h1>
+            <button id='btn-start'>Start / Pause</button>
+        </div>
+        <div class="game-board">
+            <div class="boards-container">
+                <div class="grid">
+
+                </div>
+                <div class="shape-container">
+
+                </div>
             </div>
         </div>
-       
+        <div>
+
+        </div>
     </div>
-    
     <script src="board.js" charset='UTF-8'></script>
+    <script src="shape.js" charset='UTF-8'></script>
+ 
     <script src="app.js" charset='UTF-8'></script>
 </body>
 </html>

@@ -1,19 +1,65 @@
+body{
+    background-color: black;
+}
+h1{
+    color:white;
+}
 .game-board{
-width: 28rem;
- text-align: center;
- margin: auto;
+    width:40rem;
+    text-align: center;
+    margin: 1.5rem auto;
 }
 .grid{
-width: 100%;
-height: 52rem;
-display: flex;
-flex-direction: row;
-
-flex-wrap: wrap;
-
+    width: 28rem;
+    height: 52rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 .cell{
     width: 2.5rem;
     height: 2.5rem;
-    border:1px solid black;
+    border:1px solid white;
+}
+.shape-container{
+    width: 11rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.boards-container{
+    display: flex;
+    flex-direction: row;
+    align-items:flex-start;
+    justify-content: space-between;
+}
+.cell:nth-child(1){
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-right: none;
+    border-bottom: none;
+    border-radius: 0.2rem;
+}
+.cell:nth-child(10){
+    border-top: 1px solid white;
+    border-left:  1px solid white;
+    border-bottom: none;
+    border-radius: 0.2rem;
+}
+.cell:nth-child(191){
+    border-bottom: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    border-top: none;
+    border-radius: 0.2rem;
+}
+.cell:nth-child(200){
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
+    border-left: none;
+    border-radius: 0.2rem;
+}
+
+.tetromino{
+    background-color: blue;
 }
