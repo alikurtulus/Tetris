@@ -1,13 +1,19 @@
 
  const mainBoard = document.querySelector('.grid')
  const shapeBoard = document.querySelector('.shape-container')
- 
+ const scoreDisplay = document.querySelector('#score')
+ const startBtn = document.querySelector('#btn-start')
+ const resetBtn = document.querySelector('#btn-reset')
+ const timeDisplay = document.querySelector('#time')
+ let time = 0
+ resetBtn.style.display = 'none'
 
- const colors = ['red','magenta','green','blue','yellow','pink','purple','brown','gray']
- const score = document.querySelector('#score')
  // Create your board
  const myShapeBoard = new Board(25,'cell',shapeBoard)
  const myNewBoard = new Board(210,'cell',mainBoard)
+ let timerId
+ let timeId 
+
 
 
  //Draw your board
@@ -17,16 +23,70 @@
  let myBoardSquares = Array.from(document.querySelectorAll('.grid div'))
  let myShapeBoardSquares = Array.from(document.querySelectorAll('.shape-container div'))
  
+ let viewShape = {
+     startPosition:6,
+     width:5,
+     height:5,
+     selectedElement:myShapeBoardSquares
+ }
+ let realShape = {
+    startPosition:4,
+    width:10,
+    height:20,
+    selectedElement:myBoardSquares
+ }
 
- let selectedColor = Math.floor(Math.random() * colors.length)
- let mainShape = new Shape(4,colors[selectedColor],10,30,myBoardSquares,true)
- let selectedShape = new Shape(1,colors[selectedColor],5,5,myShapeBoardSquares,true)
 
- let currentShape = Math.floor(Math.random() * 5 )
- let selectedShapeIndex = Math.floor(Math.random() * 4)
- mainShape.createShape(currentShape,selectedShapeIndex)
- selectedShape.createShape(currentShape,selectedShapeIndex)
- const timerId = setInterval(function(){
-    mainShape.moveDown()
- },1000)
+const mainShape = new Shape(realShape,viewShape,mainBoard,scoreDisplay,timerId)
+ 
+  
 
+function control(e){
+    if(e.keyCode === 37){
+        if(timerId){
+            mainShape.moveLeft()
+        }
+        
+    }
+    else if(e.keyCode === 38){
+        if(timerId){
+            mainShape.rotate()
+        }
+      
+    }
+    else if(e.keyCode === 39){
+        if(timerId){
+            mainShape.moveRight()
+        }
+         
+    }
+    else if(e.keyCode === 40){
+        // moveDown
+    }
+}
+
+document.addEventListener('keyup',control)
+startBtn.addEventListener('click', () => {
+    if(timerId){
+        clearInterval(timerId)
+        timerId = null
+    }
+    else{
+        timerId = setInterval(function(){
+            mainShape.moveDown()
+         
+         },500)
+    }
+    if(timeId){
+        clearInterval(timeId)
+        timeId = null
+    }
+    else{
+        timeId = setInterval(() => {
+            time +=1
+            timeDisplay.textContent = time
+        },1000)
+    }
+
+    
+})
