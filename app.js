@@ -37,7 +37,7 @@
  }
 
 
-const mainShape = new Shape(realShape,viewShape,mainBoard,scoreDisplay,timerId)
+const mainShape = new Shape(realShape,viewShape,mainBoard,scoreDisplay,timerId,resetBtn)
  
   
 
@@ -76,6 +76,7 @@ startBtn.addEventListener('click', () => {
             mainShape.moveDown()
          
          },500)
+         
     }
     if(timeId){
         clearInterval(timeId)

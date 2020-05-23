@@ -1,5 +1,5 @@
 class Shape{
-    constructor(realShape,viewShape,mainBoard,scoreDisplay,timerId){
+    constructor(realShape,viewShape,mainBoard,scoreDisplay,timerId,resetBtn){
         this.realShape = realShape
         this.viewShape = viewShape
         this.colors = ['red','magenta','green','blue','yellow','pink','purple','brown','gray']
@@ -13,6 +13,7 @@ class Shape{
         this.theViewTetrominoes = []
         this.selectedColor = this.colors[ Math.floor(Math.random() * this.colors.length)]
         this.mainBoard = mainBoard
+        this.resetBtn = resetBtn
         this.createShape(10)
         this.createShape(5)
         this.timerId = timerId
@@ -233,7 +234,7 @@ class Shape{
     gameOver(){
         if(this.currentRealTetromino.some(index => this.realShape.selectedElement[this.realShape.startPosition + index].classList.contains('taken'))){
               this.scoreDisplay.innerText ='The End'
-              console.log(this.timerId)
+              this.resetBtn.style.display = 'block'
               clearInterval(this.timerId)
 
         }
