@@ -2,7 +2,7 @@ class Shape{
     constructor(realShape,viewShape,mainBoard,scoreDisplay,timerId,resetBtn){
         this.realShape = realShape
         this.viewShape = viewShape
-        this.colors = ['red','magenta','green','blue','yellow','pink','purple','brown','gray']
+        this.colors = ['#d9455f','magenta','green','blue','#DE8F6E','#88AB75','#45046a','#303960','#9a1f40','#bc658d']
         this.selectedTermino = Math.floor(Math.random() * 5 )
         this.selectedtheminoRotated =  Math.floor(Math.random() * 4 )
         this.score = 0
@@ -26,8 +26,6 @@ class Shape{
         if(width === 10){
             GRID_WIDTH =  this.realShape.width
             GRID_HEIGHT = this.realShape.height
-
-
             const lTetromino = [
                 [1, GRID_WIDTH + 1, GRID_WIDTH * 2 + 1, 2],
                 [GRID_WIDTH, GRID_WIDTH + 1, GRID_WIDTH + 2, GRID_WIDTH * 2 + 2],
@@ -197,8 +195,6 @@ class Shape{
             this.addScore()
             this.gameOver()
                
-               
-              
         }
        
     }

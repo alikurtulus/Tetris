@@ -1,41 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Inline&display=swap');
 * {
     box-sizing: border-box;
   }
-  
+.main-container{
+   display: flex;
+ 
+   
+}
 body{
     background-color: black;
+    font-family: 'Bungee Inline', cursive;
 }
 h1{
     color:white;
 }
 .game-board{
-    width:43rem;
+
+    width:41rem;
     text-align: center;
-    margin:  auto;
-}
+    margin:4rem  auto;
+}   
 .grid{
-    width: 27.2rem;
-   
+    width: 26.2rem;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: wrap; 
+    border:1px solid white;
+}
+.tetromino{
+    border:1px solid white;
+    border-radius:8%;
 }
 .cell{
-    width: 2.5rem;
-    height: 2.5rem;
-    border:1px solid white;
+    width: 2.6rem;
+    height: 2.6rem;
+    
 }
 .shape-container{
     width: 14rem;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    border:1px solid white;
 }
 .boards-container{
     display: flex;
     flex-direction: row;
     align-items:flex-start;
     justify-content: space-between;
+   
 }
-
-
+.tetris-title{
+    font-size: 3rem;
+    color: white;
+    text-align: center;
+    margin: 2rem auto;
+}
+.score-time-container{
+    text-align: center;
+    margin: 2rem auto;
+}
