@@ -4,8 +4,6 @@
   }
 .main-container{
    display: flex;
- 
-   
 }
 body{
     background-color: black;
@@ -15,10 +13,9 @@ h1{
     color:white;
 }
 .game-board{
-
     width:41rem;
     text-align: center;
-    margin:4rem  auto;
+    margin:0.4rem  auto;
 }   
 .grid{
     width: 26.2rem;
@@ -34,7 +31,6 @@ h1{
 .cell{
     width: 2.6rem;
     height: 2.6rem;
-    
 }
 .shape-container{
     width: 14rem;
@@ -50,13 +46,29 @@ h1{
     justify-content: space-between;
    
 }
-.tetris-title{
-    font-size: 3rem;
+.btn{
+    width: 140px;
+    height: 30px;
+    border-radius: 8px;
+    border: none;
+    outline:0;
+    margin-bottom: 1rem;
+}
+.tetris-title {
+    font-size: 3.7rem;
     color: white;
-    text-align: center;
-    margin: 2rem auto;
+    text-align: center; 
+}
+.logo-score-board{
+  margin: 5rem 1rem 2rem 23rem;
 }
 .score-time-container{
     text-align: center;
-    margin: 2rem auto;
+  
+}
+.btn-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }

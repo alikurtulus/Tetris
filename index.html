@@ -8,8 +8,16 @@
 </head>
 <body>
     <div class="main-container">
-        <div class="tetris-title">
-            <h2 >TETRIS</h2>
+        <div class="logo-score-board">
+            <h2 class="tetris-title" >TETRIS</h2>
+            <div class='score-time-container'>
+                <h1>Score: <span id='score'> 0</span></h1>
+                <div class="btn-container">
+                    <button class="btn" id='btn-start'>Start / Pause</button>
+                    <button class="btn" id='btn-reset'>Reset</button>
+                </div>
+                <h1>Time: <span id='time'>0</span></h1>
+            </div>
         </div>
         <div class="game-board">
             <div class="boards-container">
@@ -21,12 +29,7 @@
                 </div>
             </div>
         </div>
-        <div class='score-time-container'>
-            <h1>Score: <span id='score'> 0</span></h1>
-            <button id='btn-start'>Start / Pause</button>
-            <button id='btn-reset'>Reset</button>
-            <h1>Time: <span id='time'>0</span></h1>
-        </div>
+      
     </div>
     <script src="board.js" charset='UTF-8'></script>
     <script src="shape.js" charset='UTF-8'></script>

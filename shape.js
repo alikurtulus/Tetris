@@ -1,5 +1,5 @@
 class Shape{
-    constructor(realShape,viewShape,mainBoard,scoreDisplay,timerId,resetBtn){
+    constructor(realShape,viewShape,mainBoard,scoreDisplay,timerId,timeId,resetBtn){
         this.realShape = realShape
         this.viewShape = viewShape
         this.colors = ['#d9455f','magenta','green','blue','#DE8F6E','#88AB75','#45046a','#303960','#9a1f40','#bc658d']
@@ -13,12 +13,11 @@ class Shape{
         this.theViewTetrominoes = []
         this.selectedColor = this.colors[ Math.floor(Math.random() * this.colors.length)]
         this.mainBoard = mainBoard
-        this.resetBtn = resetBtn
+        this.resetBtn=resetBtn
         this.createShape(10)
         this.createShape(5)
         this.timerId = timerId
-        
-        
+        this.timeId = timeId
     }
     createShape(width){
         let GRID_WIDTH
@@ -50,7 +49,6 @@ class Shape{
                 [0, 1, GRID_WIDTH, GRID_WIDTH + 1],
                 [0, 1, GRID_WIDTH, GRID_WIDTH + 1]
             ]
-    
             const iTetromino = [
                 [1, GRID_WIDTH + 1, GRID_WIDTH * 2 + 1, GRID_WIDTH * 3 + 1],
                 [GRID_WIDTH, GRID_WIDTH + 1, GRID_WIDTH + 2, GRID_WIDTH + 3],
@@ -64,8 +62,6 @@ class Shape{
         else if(width === 5){
             GRID_WIDTH =  this.viewShape.width
             GRID_HEIGHT = this.viewShape.height
-
-
             const lTetromino = [
                 [1, GRID_WIDTH + 1, GRID_WIDTH * 2 + 1, 2],
                 [GRID_WIDTH, GRID_WIDTH + 1, GRID_WIDTH + 2, GRID_WIDTH * 2 + 2],
@@ -90,7 +86,6 @@ class Shape{
                 [0, 1, GRID_WIDTH, GRID_WIDTH + 1],
                 [0, 1, GRID_WIDTH, GRID_WIDTH + 1]
             ]
-    
             const iTetromino = [
                 [1, GRID_WIDTH + 1, GRID_WIDTH * 2 + 1, GRID_WIDTH * 3 + 1],
                 [GRID_WIDTH, GRID_WIDTH + 1, GRID_WIDTH + 2, GRID_WIDTH + 3],
@@ -101,14 +96,10 @@ class Shape{
        
             this.currentViewTetromino = this.theViewTetrominoes[this.selectedTermino][this.selectedtheminoRotated]
         }
-       
+        
         this.draw(width)
-
     }
-    
-   
     draw(width){
-     
       if(width === 10){
         this.currentRealTetromino.forEach(index => {
             this.realShape.selectedElement[this.realShape.startPosition + index].classList.add('tetromino')
@@ -138,12 +129,9 @@ class Shape{
                 this.viewShape.selectedElement[this.viewShape.startPosition + index].style.background = 'black '
             })
         }
-       
     }
     moveDown(){
         this.undraw(10)
-        console.log(this.realShape.width)
-        console.log(this.realShape.startPosition)
         this.realShape.startPosition += this.realShape.width
         this.draw(10)
         this.freeze()
@@ -175,13 +163,10 @@ class Shape{
             this.undraw(5)
             this.currentRealTetromino.forEach(index => {
                 this.realShape.selectedElement[this.realShape.startPosition + index].classList.add('taken')
-         
              })
-          
             let random = Math.floor(Math.random() * 5)
             this.selectedTermino = random
             this.selectedtheminoRotated = Math.floor(Math.random() * 4)
-
             this.currentRealTetromino = this.theRealTetrominoes[random][this.selectedtheminoRotated]
             this.currentViewTetromino = this.theViewTetrominoes[random][this.selectedtheminoRotated]
             let randomStartPosition
@@ -204,15 +189,13 @@ class Shape{
        if(this.selectedtheminoRotated === 4 ){
         this.selectedtheminoRotated = 0
        }
-      
        this.currentRealTetromino = this.theRealTetrominoes[this.selectedTermino][this.selectedtheminoRotated]
        this.draw(10)
-       
     }
     addScore(){
         for(let  i=0; i< 200; i += this.realShape.width){
             const row = [i, i+1, i+2,i+3,i+4,i+5,i+6,i+7,i+8,i+9]
-            console.log(row)
+           
             if(row.every(index => this.realShape.selectedElement[index].classList.contains('taken'))){
                 this.score += 10
                 this.scoreDisplay.innerText = this.score
@@ -229,12 +212,21 @@ class Shape{
     }
     gameOver(){
         if(this.currentRealTetromino.some(index => this.realShape.selectedElement[this.realShape.startPosition + index].classList.contains('taken'))){
-              this.scoreDisplay.innerText ='The End'
+              this.scoreDisplay.innerText ='Game over'
               this.resetBtn.style.display = 'block'
-              clearInterval(this.timerId)
-
+              clearInterval(timerId)
+              clearInterval(timeId)
+              timerId = null
+              timeId= null
+              return true
         }
+    }
+    reset(){
+        
+        clearInterval(this.timerId)
+        this.scoreDisplay.innerText=0
+        
+
     }
   
 }
-

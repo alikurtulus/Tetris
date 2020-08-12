@@ -9,37 +9,33 @@
  resetBtn.style.display = 'none'
 
  // Create your board
- const myShapeBoard = new Board(25,'cell',shapeBoard)
- const myNewBoard = new Board(210,'cell',mainBoard)
- let timerId
- let timeId 
 
+const myShapeBoard = new Board(25,'cell',shapeBoard)
+const myNewBoard = new Board(210,'cell',mainBoard)
+let timerId
+let timeId 
 
+//Draw your board
+    myNewBoard.createBoard(210)
+    myShapeBoard.createBoard(25)
 
- //Draw your board
-  myNewBoard.createBoard(210)
-  myShapeBoard.createBoard(25)
- 
- let myBoardSquares = Array.from(document.querySelectorAll('.grid div'))
- let myShapeBoardSquares = Array.from(document.querySelectorAll('.shape-container div'))
- 
- let viewShape = {
-     startPosition:6,
-     width:5,
-     height:5,
-     selectedElement:myShapeBoardSquares
- }
- let realShape = {
+let myBoardSquares = Array.from(document.querySelectorAll('.grid div'))
+let myShapeBoardSquares = Array.from(document.querySelectorAll('.shape-container div'))
+
+let viewShape = {
+    startPosition:6,
+    width:5,
+    height:5,
+    selectedElement:myShapeBoardSquares
+}
+let realShape = {
     startPosition:4,
     width:10,
     height:20,
     selectedElement:myBoardSquares
- }
+}
 
-
-const mainShape = new Shape(realShape,viewShape,mainBoard,scoreDisplay,timerId,resetBtn)
- 
-  
+const mainShape = new Shape(realShape,viewShape,mainBoard,scoreDisplay,timerId, timeId,resetBtn)
 
 function control(e){
     if(e.keyCode === 37){
@@ -58,13 +54,11 @@ function control(e){
         if(timerId){
             mainShape.moveRight()
         }
-         
     }
     else if(e.keyCode === 40){
         // moveDown
     }
 }
-
 document.addEventListener('keyup',control)
 startBtn.addEventListener('click', () => {
     if(timerId){
@@ -74,11 +68,15 @@ startBtn.addEventListener('click', () => {
     else{
         timerId = setInterval(function(){
             mainShape.moveDown()
+            if(mainShape.gameOver()){
+                clearInterval(timeId)
+                timeId = null
+            }
          
          },500)
          
     }
-    if(timeId){
+    if(timeId ){
         clearInterval(timeId)
         timeId = null
     }
@@ -88,8 +86,19 @@ startBtn.addEventListener('click', () => {
             timeDisplay.textContent = time
         },1000)
     }
-
-    
 })
 
+resetBtn.addEventListener('click', () => {
+    time = 0
+    clearInterval(timerId)
+    clearInterval(timeId)
+    timerId=null
+    timeId=null
+    timeDisplay.textContent = time
+    myShapeBoard.clear()
+    myNewBoard.clear()
+    mainShape.reset()
+    resetBtn.style.display="none"
+
+})
 
