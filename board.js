@@ -25,7 +25,17 @@ class Board {
            }
           
        }
-       
+    }
+    clear(){
+        const cells = this.targetBoard.children
+        console.log(cells)
+        for(let i = 0; i< cells.length;i++){
+            cells[i].style.background="black"
+            cells[i].classList.remove('tetromino')
+            if(i<200){
+                cells[i].classList.remove('taken')
+            }
+        }
 
     }
 

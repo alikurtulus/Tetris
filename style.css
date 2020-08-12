@@ -52,6 +52,7 @@ h1{
     border-radius: 8px;
     border: none;
     outline:0;
+    margin-bottom: 1rem;
 }
 .tetris-title {
     font-size: 3.7rem;
@@ -59,10 +60,15 @@ h1{
     text-align: center; 
 }
 .logo-score-board{
-  margin: 5rem auto 2rem 23rem;
- 
+  margin: 5rem 1rem 2rem 23rem;
 }
 .score-time-container{
     text-align: center;
   
+}
+.btn-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }

@@ -9,30 +9,31 @@
  resetBtn.style.display = 'none'
 
  // Create your board
- const myShapeBoard = new Board(25,'cell',shapeBoard)
- const myNewBoard = new Board(210,'cell',mainBoard)
- let timerId
- let timeId 
 
- //Draw your board
-  myNewBoard.createBoard(210)
-  myShapeBoard.createBoard(25)
+const myShapeBoard = new Board(25,'cell',shapeBoard)
+const myNewBoard = new Board(210,'cell',mainBoard)
+let timerId
+let timeId 
 
- let myBoardSquares = Array.from(document.querySelectorAll('.grid div'))
- let myShapeBoardSquares = Array.from(document.querySelectorAll('.shape-container div'))
- 
- let viewShape = {
-     startPosition:6,
-     width:5,
-     height:5,
-     selectedElement:myShapeBoardSquares
- }
- let realShape = {
+//Draw your board
+    myNewBoard.createBoard(210)
+    myShapeBoard.createBoard(25)
+
+let myBoardSquares = Array.from(document.querySelectorAll('.grid div'))
+let myShapeBoardSquares = Array.from(document.querySelectorAll('.shape-container div'))
+
+let viewShape = {
+    startPosition:6,
+    width:5,
+    height:5,
+    selectedElement:myShapeBoardSquares
+}
+let realShape = {
     startPosition:4,
     width:10,
     height:20,
     selectedElement:myBoardSquares
- }
+}
 
 const mainShape = new Shape(realShape,viewShape,mainBoard,scoreDisplay,timerId,resetBtn)
 
@@ -58,7 +59,6 @@ function control(e){
         // moveDown
     }
 }
-
 document.addEventListener('keyup',control)
 startBtn.addEventListener('click', () => {
     if(timerId){
@@ -84,4 +84,17 @@ startBtn.addEventListener('click', () => {
     }
 })
 
+resetBtn.addEventListener('click', () => {
+    time = 0
+    clearInterval(timerId)
+    clearInterval(timeId)
+    timerId=null
+
+    myShapeBoard.clear()
+    myNewBoard.clear()
+    mainShape.reset()
+    resetBtn.style.display="none"
+
+  
+})
 
