@@ -1,5 +1,5 @@
 class Shape{
-    constructor(realShape,viewShape,mainBoard,scoreDisplay,timerId,resetBtn){
+    constructor(realShape,viewShape,mainBoard,scoreDisplay,timerId,timeId,resetBtn){
         this.realShape = realShape
         this.viewShape = viewShape
         this.colors = ['#d9455f','magenta','green','blue','#DE8F6E','#88AB75','#45046a','#303960','#9a1f40','#bc658d']
@@ -17,6 +17,7 @@ class Shape{
         this.createShape(10)
         this.createShape(5)
         this.timerId = timerId
+        this.timeId = timeId
     }
     createShape(width){
         let GRID_WIDTH
@@ -213,16 +214,18 @@ class Shape{
         if(this.currentRealTetromino.some(index => this.realShape.selectedElement[this.realShape.startPosition + index].classList.contains('taken'))){
               this.scoreDisplay.innerText ='Game over'
               this.resetBtn.style.display = 'block'
-              clearInterval(this.timerId)
-              this.freeze()
-              
+              clearInterval(timerId)
+              clearInterval(timeId)
+              timerId = null
+              timeId= null
+              return true
         }
     }
     reset(){
         
         clearInterval(this.timerId)
         this.scoreDisplay.innerText=0
-        console.log(this.theViewTetrominoes )
+        
 
     }
   

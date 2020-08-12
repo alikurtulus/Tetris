@@ -35,7 +35,7 @@ let realShape = {
     selectedElement:myBoardSquares
 }
 
-const mainShape = new Shape(realShape,viewShape,mainBoard,scoreDisplay,timerId,resetBtn)
+const mainShape = new Shape(realShape,viewShape,mainBoard,scoreDisplay,timerId, timeId,resetBtn)
 
 function control(e){
     if(e.keyCode === 37){
@@ -68,11 +68,15 @@ startBtn.addEventListener('click', () => {
     else{
         timerId = setInterval(function(){
             mainShape.moveDown()
+            if(mainShape.gameOver()){
+                clearInterval(timeId)
+                timeId = null
+            }
          
          },500)
          
     }
-    if(timeId){
+    if(timeId ){
         clearInterval(timeId)
         timeId = null
     }
@@ -89,12 +93,12 @@ resetBtn.addEventListener('click', () => {
     clearInterval(timerId)
     clearInterval(timeId)
     timerId=null
-
+    timeId=null
+    timeDisplay.textContent = time
     myShapeBoard.clear()
     myNewBoard.clear()
     mainShape.reset()
     resetBtn.style.display="none"
 
-  
 })
 
