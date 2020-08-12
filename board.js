@@ -17,7 +17,7 @@ class Board {
                     cell.className = 'taken'
                     this.targetBoard.appendChild(cell)
                 }
-           }
+            }
            else{
             const cell = document.createElement('div')
             cell.className = this.className

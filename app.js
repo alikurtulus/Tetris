@@ -14,12 +14,10 @@
  let timerId
  let timeId 
 
-
-
  //Draw your board
   myNewBoard.createBoard(210)
   myShapeBoard.createBoard(25)
- 
+
  let myBoardSquares = Array.from(document.querySelectorAll('.grid div'))
  let myShapeBoardSquares = Array.from(document.querySelectorAll('.shape-container div'))
  
@@ -36,10 +34,7 @@
     selectedElement:myBoardSquares
  }
 
-
 const mainShape = new Shape(realShape,viewShape,mainBoard,scoreDisplay,timerId,resetBtn)
- 
-  
 
 function control(e){
     if(e.keyCode === 37){
@@ -58,7 +53,6 @@ function control(e){
         if(timerId){
             mainShape.moveRight()
         }
-         
     }
     else if(e.keyCode === 40){
         // moveDown
@@ -88,8 +82,6 @@ startBtn.addEventListener('click', () => {
             timeDisplay.textContent = time
         },1000)
     }
-
-    
 })
 
 

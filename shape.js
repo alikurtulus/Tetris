@@ -17,8 +17,6 @@ class Shape{
         this.createShape(10)
         this.createShape(5)
         this.timerId = timerId
-        
-        
     }
     createShape(width){
         let GRID_WIDTH
@@ -105,8 +103,6 @@ class Shape{
         this.draw(width)
 
     }
-    
-   
     draw(width){
      
       if(width === 10){
@@ -138,7 +134,6 @@ class Shape{
                 this.viewShape.selectedElement[this.viewShape.startPosition + index].style.background = 'black '
             })
         }
-       
     }
     moveDown(){
         this.undraw(10)
@@ -181,7 +176,6 @@ class Shape{
             let random = Math.floor(Math.random() * 5)
             this.selectedTermino = random
             this.selectedtheminoRotated = Math.floor(Math.random() * 4)
-
             this.currentRealTetromino = this.theRealTetrominoes[random][this.selectedtheminoRotated]
             this.currentViewTetromino = this.theViewTetrominoes[random][this.selectedtheminoRotated]
             let randomStartPosition
